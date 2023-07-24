@@ -30,8 +30,10 @@
     <button id="button_four" type="button" onclick="if (buttonFourOn===false) {updateButton(4); loadExploration();}">4.
         Explore the Dataset
     </button>
-    &nbsp (Click to jump to a scene)
+    &nbsp (click to jump to a scene)
 </div>
+
+<hr style="width:50%;display: flex; justify-content: center; padding-left: 15%; padding-right: 15%;">
 
 <div style="display: flex; justify-content: center; padding-left: 15%; padding-right: 15%;">
     <div id="main_description">
@@ -50,6 +52,16 @@
 
 <div style="display: flex; justify-content: center;">
     <div id="main_chart" style=""></div>
+</div>
+
+<hr style="width:50%;display: flex; justify-content: center; padding-left: 15%; padding-right: 15%;">
+
+<div style="display: flex; justify-content: center; padding-left: 15%; padding-right: 15%;">
+    <div style="font-size: 10px; color: #555555">
+        <p>Data as of Jan. 4, 2023</p>
+        <p><a href="https://data.cdc.gov/Vaccinations/COVID-19-Vaccination-Trends-in-the-United-States-N/rh2h-3yt2">[1] CDC COVID-19 Vaccination Trends in the United States</a></p>
+        <p><a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports_us">[2] Johns Hopkins University CSSE COVID-19 Data Repository</a></p>
+    </div>
 </div>
 
 <script>
@@ -193,7 +205,9 @@
         clearPage();
 
         document.getElementById("main_description").innerHTML = "<p>\n" +
-            "As the trend line indicates, there is a correlation between the vaccination rate and the incident rate. However, an apparent anomaly is Rhode Island, which has a high vaccination rate but still the highest incident rate.\n" +
+            "As the trend line indicates, there is a correlation between the vaccination rate and the incident rate. However, an apparent anomaly is " +
+            "<button type=\"button\" onclick=\"loadOverviewExceptions();\">Rhode Island</button>" +
+            "(click for annotation), which has a high vaccination rate but still the highest incident rate.\n" +
             "</p>\n" +
             "<p>\n" +
             "Can we explain the anomaly with regions of states? Or can we see more patterns with regions? For viewing patterns for each region, please proceed to the next scene\n" +
@@ -259,8 +273,6 @@
             .text("Incident Rate - Cases Per 100K");
 
         loadOverviewTrend(X, Y);
-
-        loadOverviewExceptions();
     }
 
     function loadOverviewTrend(X, Y) {
@@ -326,7 +338,13 @@
         clearPage();
 
         document.getElementById("main_description").innerHTML = "<p>\n" +
-            "Each state is colored based on census regions - <span style=\"color: #ffa600\">West</span>, <span style=\"color: #61ad44\">South</span>, <span style=\"color: #00918e\">Northeast</span>, <span style=\"color: #346888\">Midwest</span>. For the Northeast, West, and South, there are still patterns that a higher vaccination rate leads to a lower incident rate, but not Midwest. In addition, the anomaly of Rhode Island is still unexplained.\n" +
+            "Each state is colored based on census regions - <span style=\"color: #ffa600\">West</span>, " +
+            "<span style=\"color: #61ad44\">South</span>, " +
+            "<span style=\"color: #00918e\">Northeast</span>, " +
+            "<span style=\"color: #346888\">Midwest</span>. For the Northeast, West, and South, " +
+            "there are still patterns that a higher vaccination rate leads to a lower incident rate, " +
+            "but not Midwest. In addition, the anomaly of <button type=\"button\" onclick=\"loadOverviewExceptions();\">Rhode Island</button>" +
+            "(click for annotation) is still unexplained. Can we find the explanation by further exploring the dataset?\n" +
             "</p>\n" +
             "<p>\n" +
             "To explore the dataset independently and identify other patterns, please proceed to the next scene\n" +
@@ -501,10 +519,10 @@
         clearChart();
 
         document.getElementById("region_checkbox").innerHTML = "Select Region(s): " +
-            "    <input type=\"checkbox\" class=\"checkbox\" value=\"Northeast\" checked><label><span style=\"color: #00918e\">Northeast</span></label>\n" +
-            "    <input type=\"checkbox\" class=\"checkbox\" value=\"Midwest\" checked><label><span style=\"color: #346888\">Midwest</span></label>\n" +
-            "    <input type=\"checkbox\" class=\"checkbox\" value=\"South\" checked><label><span style=\"color: #61ad44\">South</span></label>\n" +
-            "    <input type=\"checkbox\" class=\"checkbox\" value=\"West\" checked><label><span style=\"color: #ffa600\">West</span></label>";
+            "    &nbsp <input type=\"checkbox\" class=\"checkbox\" value=\"Northeast\" checked><label><span style=\"color: #00918e\">Northeast</span></label>\n" +
+            "    &nbsp <input type=\"checkbox\" class=\"checkbox\" value=\"Midwest\" checked><label><span style=\"color: #346888\">Midwest</span></label>\n" +
+            "    &nbsp <input type=\"checkbox\" class=\"checkbox\" value=\"South\" checked><label><span style=\"color: #61ad44\">South</span></label>\n" +
+            "    &nbsp <input type=\"checkbox\" class=\"checkbox\" value=\"West\" checked><label><span style=\"color: #ffa600\">West</span></label>";
 
         document.getElementById("explore_instruction").innerHTML = "Zoom: scroll wheel (zoom in/out) or double click (zoom in) " +
             "&nbsp &nbsp Change View: drag to move"
