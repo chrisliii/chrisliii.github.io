@@ -213,8 +213,8 @@ function loadOverviewTrend(X, Y) {
         {
             type: d3.annotationLabel,
             note: {
-                //label: "Basic settings with subject position(x,y) and a note offset(dx, dy)",
-                title: "Y = -0.0495 X + 40,398",
+                //label: "Y = -0.0495 X + 40,398",
+                title: "All States",
                 wrap: 200
             },
             x: X(140000),
@@ -222,7 +222,7 @@ function loadOverviewTrend(X, Y) {
             dy: Y(26538) - Y(33468),
             dx: X(280000) - X(140000)
         }].map(function (d) {
-        d.color = "#e67f83";
+        d.color = "#6aaa96";
         return d
     })
 
@@ -408,7 +408,7 @@ function loadRegionView() {
 function loadExploration() {
     clearPage();
 
-    document.getElementById("main_description").innerHTML = "</p>Explore by changing axis, selecting region(s), or zooming\n" +
+    document.getElementById("main_description").innerHTML = "</p>Explore by changing axis, selecting region(s), zooming, or panning\n" +
         "<p>";
     document.getElementById("axis_dropdown").innerHTML = "X Asix: " +
         "    <select class=\"dropdown\" id=\"x_dropdown\">\n" +
@@ -458,7 +458,7 @@ function updateExploration(xDomainL, xDomainH, yDomainL, yDomainH, xAxisValue, y
         "    &nbsp <input type=\"checkbox\" class=\"checkbox\" value=\"West\" checked><label><span style=\"color: #ffa600\">West</span></label>";
 
     document.getElementById("explore_instruction").innerHTML = "Zoom: scroll wheel (zoom in/out) or double click (zoom in) " +
-        "&nbsp &nbsp Change View: drag to move"
+        "&nbsp &nbsp Change View (Panning): drag to move"
 
     //svg
     Svg = d3.select("#main_chart")
